@@ -6,24 +6,11 @@
 /*   By: mmiilpal <mmiilpal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 19:37:52 by mmiilpal          #+#    #+#             */
-/*   Updated: 2023/12/15 17:44:00 by mmiilpal         ###   ########.fr       */
+/*   Updated: 2024/01/08 19:03:32 by mmiilpal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/get_next_line.h"
-
-int	ft_lstsize(t_list *lst)
-{
-	int	i;
-
-	i = 0;
-	while (lst)
-	{
-		lst = lst -> next;
-		i++;
-	}
-	return (i);
-}
 
 char	*ft_strchr(char const *s, int c)
 {
@@ -37,4 +24,74 @@ char	*ft_strchr(char const *s, int c)
 		return ((char *)s);
 	else
 		return (NULL);
+}
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*str;
+	char	*str_ptr;
+
+	if (!s1 || !s2)
+		return (NULL);
+	str = (char *) malloc (sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!str)
+		return (NULL);
+	str_ptr = str;
+	while (*s1)
+		*str++ = *s1++;
+	while (*s2)
+		*str++ = *s2++;
+	*str = '\0';
+	return (str_ptr);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*str;
+	size_t	i;
+	size_t	j;
+
+	if (!s)
+		return (NULL);
+	if (start >= ft_strlen(s))
+		return (ft_strdup(""));
+	if (start + len > ft_strlen(s))
+		len = ft_strlen(s) - start;
+	str = (char *) malloc (sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
+	i = start;
+	j = 0;
+	while (i < ft_strlen(s) && j < len)
+		str[j++] = s[i++];
+	str[j] = '\0';
+	return (str);
+}
+
+size_t	ft_strlen(const char *string)
+{
+	size_t	n;
+
+	n = 0;
+	while (string[n])
+		n++;
+	return (n);
+}
+
+char	*ft_strdup(const char *s)
+{
+	char	*dest;
+	int		i;
+
+	i = 0;
+	dest = (char *) malloc ((ft_strlen(s) + 1) * sizeof(char));
+	if (!dest)
+		return (NULL);
+	while (s[i])
+	{
+		dest[i] = s[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }

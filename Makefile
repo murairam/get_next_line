@@ -6,16 +6,16 @@
 #    By: mmiilpal <mmiilpal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/12 14:28:42 by mmiilpal          #+#    #+#              #
-#    Updated: 2023/12/12 14:28:43 by mmiilpal         ###   ########.fr        #
+#    Updated: 2023/12/16 19:33:58 by mmiilpal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
+NAME = get_next_line.a
 
-INCLUDES := inc/ft_printf.h
+INCLUDES := inc/get_next_line.h
 
-SRCS := ft_format_print.c \
-		ft_printf.c
+SRCS := get_next_line.c \
+		get_next_line_utils.c
 
 SRCS := $(addprefix srcs/, $(SRCS))
 
