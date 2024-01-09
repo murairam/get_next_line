@@ -6,7 +6,7 @@
 /*   By: mmiilpal <mmiilpal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 19:38:33 by mmiilpal          #+#    #+#             */
-/*   Updated: 2024/01/08 19:05:18 by mmiilpal         ###   ########.fr       */
+/*   Updated: 2024/01/09 18:17:46 by mmiilpal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,8 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 size_t	ft_strlen(const char *string);
 char	*ft_strdup(const char *s);
+void	*ft_calloc(size_t nmemb, size_t size);
+void	ft_bzero(void *s, size_t n);
+void	*ft_memset(void *s, int c, size_t len);
 
 #endif

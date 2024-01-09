@@ -6,7 +6,7 @@
 /*   By: mmiilpal <mmiilpal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 19:37:52 by mmiilpal          #+#    #+#             */
-/*   Updated: 2024/01/08 19:03:32 by mmiilpal         ###   ########.fr       */
+/*   Updated: 2024/01/09 18:16:41 by mmiilpal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,38 @@ char	*ft_strdup(const char *s)
 	}
 	dest[i] = '\0';
 	return (dest);
+}
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	void	*ptr;
+
+	if (nmemb && size && (size != size * nmemb / nmemb))
+		return (NULL);
+	ptr = (void *)malloc(nmemb * size);
+	if (!ptr)
+		return (NULL);
+	ft_bzero(ptr, nmemb * size);
+	return (ptr);
+}
+
+void	ft_bzero(void *s, size_t n)
+{
+	ft_memset(s, 0, n);
+}
+
+void	*ft_memset(void *s, int c, size_t len)
+{
+	unsigned char	*ptr;
+	size_t			i;
+
+	i = 0;
+	ptr = (unsigned char *) s;
+	while (i < len)
+	{
+		*ptr = (unsigned char)c;
+		ptr++;
+		i++;
+	}
+	return (s);
 }

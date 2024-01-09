@@ -6,13 +6,13 @@
 /*   By: mmiilpal <mmiilpal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 19:37:37 by mmiilpal          #+#    #+#             */
-/*   Updated: 2024/01/08 19:51:37 by mmiilpal         ###   ########.fr       */
+/*   Updated: 2024/01/09 19:21:46 by mmiilpal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/get_next_line.h"
 
-char	*new_line(char *line_buffer)
+/* char	*new_line(char *line_buffer)
 {
 	char	*lines_read;
 
@@ -22,12 +22,11 @@ char	*new_line(char *line_buffer)
 char	*fill_buffer(int fd, char *lines_read, char *buffer)
 {
 	char	*line;
-	ssize_t	bytes;
 
-	bytes = 1;
+	if (!line)
+		return (NULL);
 	while (bytes > 0)
 	{
-		bytes = read(fd, buffer, BUFFER_SIZE);
 		if (bytes > 0)
 		{
 			if (ft_strchr(line[bytes], '\n)') != 0)
@@ -35,14 +34,20 @@ char	*fill_buffer(int fd, char *lines_read, char *buffer)
 		}
 	}
 	return (lines_read);
-}
+} */
 
 char	*get_next_line(int fd)
 {
 	char	*buffer;
-	char	*next_line;
+	ssize_t	bytes;
 
-	if (fd < 0 || BUFFER_SIZE < 0 || read(fd, 0, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE < 0)
 		return (NULL);
-	buffer = fill_buffer(fd, next)
+	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	if (!buffer)
+		return (NULL);
+	bytes = read(fd, buffer, BUFFER_SIZE);
+	if (bytes <= 0)
+		return (free(buffer), NULL);
+	return (buffer);
 }
