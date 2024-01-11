@@ -6,11 +6,11 @@
 /*   By: mmiilpal <mmiilpal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 19:37:52 by mmiilpal          #+#    #+#             */
-/*   Updated: 2024/01/09 18:16:41 by mmiilpal         ###   ########.fr       */
+/*   Updated: 2024/01/11 19:08:36 by mmiilpal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/get_next_line.h"
+#include "get_next_line.h"
 
 char	*ft_strchr(char const *s, int c)
 {
