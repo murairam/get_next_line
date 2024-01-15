@@ -6,7 +6,7 @@
 /*   By: mmiilpal <mmiilpal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 19:38:33 by mmiilpal          #+#    #+#             */
-/*   Updated: 2024/01/15 15:00:28 by mmiilpal         ###   ########.fr       */
+/*   Updated: 2024/01/15 15:12:17 by mmiilpal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@
 #  define BUFFER_SIZE 42
 # endif
 
+// get_next_line functions
+
 char	*get_next_line(int fd);
 char	*add_to_buffer(char *buffer, char *char_read);
 char	*read_char(int fd, char *buffer);
 char	*get_line(char *buffer);
 char	*get_remaining(char *buffer);
-
 
 // get_next_line_utils functions
 

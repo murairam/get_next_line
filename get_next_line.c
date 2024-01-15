@@ -6,7 +6,7 @@
 /*   By: mmiilpal <mmiilpal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 19:37:37 by mmiilpal          #+#    #+#             */
-/*   Updated: 2024/01/15 14:59:23 by mmiilpal         ###   ########.fr       */
+/*   Updated: 2024/01/15 18:24:00 by mmiilpal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,12 @@ char	*get_remaining(char *buffer)
 	char	*line;
 
 	i = 0;
+	if (!buffer)
+		return (free(buffer), NULL);
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
 	if (!buffer[i])
-	{
-		free(buffer);
-		return (NULL);
-	}
+		return (free(buffer), NULL);
 	line = ft_calloc((ft_strlen(buffer) - i + 1), sizeof(char));
 	i++;
 	j = 0;
@@ -100,6 +99,8 @@ char	*get_next_line(int fd)
 	if (!buffer)
 		return (NULL);
 	line = get_line(buffer);
+	if (!line)
+		return (NULL);
 	buffer = get_remaining(buffer);
 	return (line);
 }
