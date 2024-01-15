@@ -6,25 +6,11 @@
 /*   By: mmiilpal <mmiilpal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 19:37:52 by mmiilpal          #+#    #+#             */
-/*   Updated: 2024/01/11 19:08:36 by mmiilpal         ###   ########.fr       */
+/*   Updated: 2024/01/15 14:55:24 by mmiilpal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-char	*ft_strchr(char const *s, int c)
-{
-	while (*s)
-	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s++;
-	}
-	if (*s == (char)c)
-		return ((char *)s);
-	else
-		return (NULL);
-}
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -45,27 +31,18 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (str_ptr);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strchr(char const *s, int c)
 {
-	char	*str;
-	size_t	i;
-	size_t	j;
-
-	if (!s)
+	while (*s)
+	{
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
+	}
+	if (*s == (char)c)
+		return ((char *)s);
+	else
 		return (NULL);
-	if (start >= ft_strlen(s))
-		return (ft_strdup(""));
-	if (start + len > ft_strlen(s))
-		len = ft_strlen(s) - start;
-	str = (char *) malloc (sizeof(char) * (len + 1));
-	if (!str)
-		return (NULL);
-	i = start;
-	j = 0;
-	while (i < ft_strlen(s) && j < len)
-		str[j++] = s[i++];
-	str[j] = '\0';
-	return (str);
 }
 
 size_t	ft_strlen(const char *string)
@@ -78,24 +55,6 @@ size_t	ft_strlen(const char *string)
 	return (n);
 }
 
-char	*ft_strdup(const char *s)
-{
-	char	*dest;
-	int		i;
-
-	i = 0;
-	dest = (char *) malloc ((ft_strlen(s) + 1) * sizeof(char));
-	if (!dest)
-		return (NULL);
-	while (s[i])
-	{
-		dest[i] = s[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
-}
-
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*ptr;
@@ -105,13 +64,8 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	ptr = (void *)malloc(nmemb * size);
 	if (!ptr)
 		return (NULL);
-	ft_bzero(ptr, nmemb * size);
+	ft_memset(ptr, 0, nmemb * size);
 	return (ptr);
-}
-
-void	ft_bzero(void *s, size_t n)
-{
-	ft_memset(s, 0, n);
 }
 
 void	*ft_memset(void *s, int c, size_t len)
