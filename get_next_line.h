@@ -6,7 +6,7 @@
 /*   By: mmiilpal <mmiilpal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 19:38:33 by mmiilpal          #+#    #+#             */
-/*   Updated: 2024/01/15 15:12:17 by mmiilpal         ###   ########.fr       */
+/*   Updated: 2024/01/19 17:42:52 by mmiilpal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 10000000
 # endif
 
 // get_next_line functions
