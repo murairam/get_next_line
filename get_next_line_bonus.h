@@ -6,7 +6,7 @@
 /*   By: mmiilpal <mmiilpal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 19:38:33 by mmiilpal          #+#    #+#             */
-/*   Updated: 2024/01/17 18:03:51 by mmiilpal         ###   ########.fr       */
+/*   Updated: 2024/01/23 17:46:09 by mmiilpal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #  define BUFFER_SIZE 42
 # endif
 
-# define MAX_FD 10240
+# define MAX_FD 1024
 
 // get_next_line functions
 

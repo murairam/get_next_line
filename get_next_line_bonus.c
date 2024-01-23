@@ -6,7 +6,7 @@
 /*   By: mmiilpal <mmiilpal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 19:37:37 by mmiilpal          #+#    #+#             */
-/*   Updated: 2024/01/17 19:31:40 by mmiilpal         ###   ########.fr       */
+/*   Updated: 2024/01/23 17:56:15 by mmiilpal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,25 +47,29 @@ char	*read_char(int fd, char *buffer)
 {
 	char	*char_read;
 	ssize_t	bytes;
+	size_t	i;
 
 	if (!buffer)
 		buffer = ft_calloc(1, 1);
-	char_read = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	if (BUFFER_SIZE < 42 || BUFFER_SIZE > 10000)
+		i = 42;
+	else
+		i = BUFFER_SIZE;
+	char_read = ft_calloc(i + 1, sizeof(char));
 	bytes = 1;
 	while (bytes > 0)
 	{
-		bytes = read(fd, char_read, BUFFER_SIZE);
+		bytes = read(fd, char_read, i);
 		if (bytes == -1)
 			return (free(char_read), NULL);
-		if (bytes == 0) // added this line
+		if (bytes == 0)
 			break ;
 		char_read[bytes] = 0;
 		buffer = add_to_buffer(buffer, char_read);
 		if (ft_strchr(char_read, '\n'))
 			break ;
 	}
-	free(char_read);
-	return (buffer);
+	return (free(char_read), buffer);
 }
 
 char	*get_line(char *buffer)
@@ -92,17 +96,17 @@ char	*get_line(char *buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*buffer[MAX_FD];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, NULL, 0) < 0)
 		return (NULL);
-	buffer = read_char(fd, buffer);
-	if (*buffer == 0)
-		return (free(buffer), NULL);
-	line = get_line(buffer);
+	buffer[fd] = read_char(fd, buffer[fd]);
+	if (*buffer[fd] == 0)
+		return (free(buffer[fd]), buffer[fd] = NULL);
+	line = get_line(buffer[fd]);
 	if (!line)
 		return (NULL);
-	buffer = get_remaining(buffer);
+	buffer[fd] = get_remaining(buffer[fd]);
 	return (line);
 }
