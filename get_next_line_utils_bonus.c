@@ -6,7 +6,7 @@
 /*   By: mmiilpal <mmiilpal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 19:37:52 by mmiilpal          #+#    #+#             */
-/*   Updated: 2024/01/17 17:55:43 by mmiilpal         ###   ########.fr       */
+/*   Updated: 2024/01/25 18:14:53 by mmiilpal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,31 +55,37 @@ size_t	ft_strlen(const char *string)
 	return (n);
 }
 
-void	*ft_calloc(size_t nmemb, size_t size)
+char	*ft_strdup(const char *s)
 {
-	void	*ptr;
-
-	if (nmemb && size && (size != size * nmemb / nmemb))
-		return (NULL);
-	ptr = (void *)malloc(nmemb * size);
-	if (!ptr)
-		return (NULL);
-	ft_memset(ptr, 0, nmemb * size);
-	return (ptr);
-}
-
-void	*ft_memset(void *s, int c, size_t len)
-{
-	unsigned char	*ptr;
-	size_t			i;
+	char	*dest;
+	int		i;
 
 	i = 0;
-	ptr = (unsigned char *) s;
-	while (i < len)
+	dest = (char *) malloc ((ft_strlen(s) + 1) * sizeof(char));
+	if (!dest)
+		return (NULL);
+	while (s[i])
 	{
-		*ptr = (unsigned char)c;
-		ptr++;
+		dest[i] = s[i];
 		i++;
 	}
-	return (s);
+	dest[i] = '\0';
+	return (dest);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*new_str;
+	size_t	i;
+	size_t	j;
+
+	new_str = (char *)malloc(len + 1);
+	if (!s || !(new_str))
+		return (0);
+	i = start;
+	j = 0;
+	while (i < ft_strlen(s) && j < len)
+		new_str[j++] = s[i++];
+	new_str[j] = '\0';
+	return (new_str);
 }

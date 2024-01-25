@@ -6,7 +6,7 @@
 /*   By: mmiilpal <mmiilpal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 19:38:33 by mmiilpal          #+#    #+#             */
-/*   Updated: 2024/01/19 17:42:52 by mmiilpal         ###   ########.fr       */
+/*   Updated: 2024/01/25 18:19:15 by mmiilpal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,21 @@
 # include <stdlib.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10000000
+#  define BUFFER_SIZE 42
 # endif
 
 // get_next_line functions
 
 char	*get_next_line(int fd);
-char	*add_to_buffer(char *buffer, char *char_read);
-char	*read_char(int fd, char *buffer);
+char	*read_char(int fd, char *buffer, char *temp);
 char	*get_line(char *buffer);
-char	*get_remaining(char *buffer);
 
 // get_next_line_utils functions
 
 char	*ft_strchr(char const *s, int c);
 char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlen(const char *string);
-void	*ft_calloc(size_t nmemb, size_t size);
-void	*ft_memset(void *s, int c, size_t len);
+char	*ft_strdup(const char *s);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 #endif
